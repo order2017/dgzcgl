@@ -11,26 +11,36 @@
 |
 */
 
-//前台 *******************
+/***************  前台 *******************/
+
+//微信首页
 Route::get('/','Wechat\IndexController@index');
+
+//微信登录页面
 Route::name('wechat.wechat-login')->get('wechat-login','Wechat\IndexController@wechatLogin');
 
+//用户列表页面
 Route::middleware('active.nav')->name('wechat.user-list')->get('user-list','Wechat\UserController@index');
 
+//用户二维码页面
 Route::middleware('active.nav')->name('wechat.user-qrcode')->get('user-qrcode','Wechat\UserController@userQrcode');
 
-Route::middleware('active.nav')->name('wechat.client-list')->get('client-list','Wechat\ClientController@index');
+//客户列表页面
+Route::name('wechat.client-list')->get('client-list','Wechat\ClientController@index');
 
 
-//后台 *******************
+/***************  后台  *******************/
 
+//后台登录页面
 Route::prefix('admin')->get('/', 'Admin\AdminController@login');
 Route::prefix('admin')->get('login', 'Admin\AdminController@login');
-
 Route::prefix('admin')->post('login', 'Admin\AdminController@signin');
 
+//后台登录首页
 Route::prefix('admin')->middleware('admin.login')->name('admin.index')->get('index','Admin\AdminController@index');
 
+//后台用户管理列表
 Route::prefix('admin')->middleware('admin.login')->name('admin.manage_list')->get('manage_list/{user_id}','Admin\AdminController@show');
 
+//后台用户退出页面
 Route::prefix('admin')->middleware('admin.login')->name('admin.logout')->get('logout','Admin\AdminController@logout');
