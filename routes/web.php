@@ -20,10 +20,12 @@ Route::get('/','Wechat\IndexController@index');
 Route::name('wechat.wechat-login')->get('wechat-login','Wechat\IndexController@wechatLogin');
 
 //用户列表页面
-Route::middleware('active.nav')->name('wechat.user-list')->get('user-list','Wechat\UserController@index');
+//Route::middleware('active.nav')->name('wechat.user-list')->get('user-list','Wechat\UserController@index');
+Route::name('wechat.user-list')->get('user-list','Wechat\UserController@index');
 
 //用户二维码页面
-Route::middleware('active.nav')->name('wechat.user-qrcode')->get('user-qrcode','Wechat\UserController@userQrcode');
+//Route::middleware('active.nav')->name('wechat.user-qrcode')->get('user-qrcode','Wechat\UserController@userQrcode');
+Route::name('wechat.user-qrcode')->get('user-qrcode','Wechat\UserController@userQrcode');
 
 //客户列表页面
 Route::name('wechat.client-list')->get('client-list','Wechat\ClientController@index');

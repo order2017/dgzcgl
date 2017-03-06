@@ -2,7 +2,7 @@
 @section('content')
     <div class="weui_cells weui_cells_access">
         <a class="weui_cell" href="{{ route('wechat.user-qrcode') }}">
-            <div class="weui_cell_hd"><img src="{{ asset('build/images/favicon.png') }}" alt="" style="width:35px;margin-right:5px;display:block"></div>
+            <div class="weui_cell_hd"><img src="{{ asset('build/wechat/images/ava.png') }}" alt="" style="width:35px;margin-right:5px;display:block"></div>
             <div class="weui_cell_bd weui_cell_primary">
                 <p>我的信息</p>
             </div>
