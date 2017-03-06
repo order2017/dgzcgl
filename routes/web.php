@@ -28,6 +28,24 @@ Route::middleware('active.nav')->name('wechat.user-qrcode')->get('user-qrcode','
 //客户列表页面
 Route::name('wechat.client-list')->get('client-list','Wechat\ClientController@index');
 
+//常见问题解答页面
+Route::name('wechat.other-list')->get('other-list','Wechat\OtherController@index');
+
+//推荐方案页面
+Route::name('wechat.scheme-list')->get('scheme-list','Wechat\OtherController@Scheme');
+
+//方案详情页面
+Route::name('wechat.scheme-detail')->get('scheme-detail','Wechat\OtherController@SchemeDetail');
+
+//客户状态页面
+Route::name('wechat.client-status-list')->get('wechat.client-status-list','Wechat\ClientController@ClientStatus');
+
+//客户详情页面
+Route::name('wechat.client-detail')->get('wechat.client-detail','Wechat\ClientController@ClientDetail');
+
+//佣金页面
+Route::name('wechat.commission-list')->get('wechat.commission-list','Wechat\CommissionController@index');
+
 
 /***************  后台  *******************/
 

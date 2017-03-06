@@ -22,9 +22,9 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function ClientStatus()
     {
-        //
+        return view('wechat.client-status-list');
     }
 
     /**
@@ -33,9 +33,9 @@ class ClientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function ClientDetail()
     {
-        //
+        return view('wechat.client-detail');
     }
 
     /**

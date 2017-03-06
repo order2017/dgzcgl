@@ -23,7 +23,7 @@
             </div>
             <p class="weui_tabbar_label">首页</p>
         </a>
-        <a href="javascript:;" class="weui_tabbar_item">
+        <a href="{{ route('wechat.client-status-list') }}" class="weui_tabbar_item">
             <div class="weui_tabbar_icon">
                 <img src="{{ url('build/wechat/images/icon_nav_article.png') }}" alt="">
             </div>
