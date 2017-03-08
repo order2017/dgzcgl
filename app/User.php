@@ -20,6 +20,9 @@ class User extends Authenticatable
     const SEX_MAN = 1;
     const SEX_WOMAN = 2;
 
+    const USER_TYPE_PC = 10;
+    const USER_TYPE_WECHAT = 20;
+
     public $primaryKey = 'user_id';
 
 
@@ -29,7 +32,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'user_name', 'user_email', 'password',
+        'user_name', 'user_email', 'password','user_sex','user_mobile','wechat_openid','user_avatar','user_type'
     ];
 
     /**
