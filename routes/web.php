@@ -19,6 +19,9 @@ Route::get('/','Wechat\IndexController@index');
 //微信登录页面
 Route::name('wechat.wechat-login')->get('wechat-login','Wechat\IndexController@wechatLogin');
 
+//微信注册页面
+Route::name('wechat.wechat-register')->get('wechat-register','Wechat\IndexController@wechatRegister');
+
 //用户列表页面
 //Route::middleware('active.nav')->name('wechat.user-list')->get('user-list','Wechat\UserController@index');
 Route::name('wechat.user-list')->get('user-list','Wechat\UserController@index');

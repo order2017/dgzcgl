@@ -86,4 +86,8 @@ class IndexController extends Controller
     public function wechatLogin(){
         return view('wechat.wechat-login');
     }
+
+    public function wechatRegister(){
+        return view('wechat.wechat-register');
+    }
 }
