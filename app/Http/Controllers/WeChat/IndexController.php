@@ -90,4 +90,8 @@ class IndexController extends Controller
     public function wechatRegister(){
         return view('wechat.wechat-register');
     }
+
+    public function wechatRegisterStore(Request $request){
+        return view('wechat.wechat-register');
+    }
 }
