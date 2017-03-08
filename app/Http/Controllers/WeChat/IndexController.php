@@ -88,7 +88,13 @@ class IndexController extends Controller
 
     public function wechatLogin(){
         if($this->isMobile()){
-            return redirect('login');
+            //检查微信内核浏览器，和非浏览器打开
+            $useragent = addslashes($_SERVER['HTTP_USER_AGENT']);
+            if(strpos($useragent, 'MicroMessenger') === false && strpos($useragent, 'Windows Phone') === false){
+                return view('wechat.wechat-login');
+            }else{
+                return redirect('login');
+            }
         }else{
             return view('wechat.wechat-login');
         }
