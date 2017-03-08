@@ -14,9 +14,17 @@
 /***************  前台 *******************/
 
 //微信首页
-Route::middleware('active.nav')->get('/','Wechat\IndexController@index');
+Route::middleware('active.nav')->name('wechat.index')->get('index','Wechat\IndexController@index');
+
+//微信提交Token验证
+Route::any('weixin', 'WechatController@serve');
+//微信登陆
+Route::any('login', 'WechatController@login');
+//微信获取授权
+Route::any('oauth_callback', 'WechatController@oauth_callback');
 
 //微信登录页面
+Route::name('wechat.wechat-login')->get('/','Wechat\IndexController@wechatLogin');
 Route::name('wechat.wechat-login')->get('wechat-login','Wechat\IndexController@wechatLogin');
 Route::name('wechat.wechat-login')->post('wechat-login','Wechat\IndexController@wechatLoginSrote');
 

@@ -17,7 +17,7 @@
 <div style="height:60px;"></div>
 <div style="position: fixed; bottom:0px; width: 100%;">
     <div class="weui_tabbar">
-        <a href="/" class="weui_tabbar_item">
+        <a href="{{ route('wechat.index') }}" class="weui_tabbar_item">
             <div class="weui_tabbar_icon">
                 <img src="{{ url('build/wechat/images/icon_nav_button.png') }}" alt="">
             </div>
