@@ -44,8 +44,8 @@
                 <li class="admin-parent">
                     <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}"><span class="am-icon-puzzle-piece"></span> 合伙架构 </a>
                     <ul class="am-list admin-sidebar-sub am-collapse am-in" id="collapse-nav">
-                        <li><a href="#"><span class="am-icon-calendar"></span> 用户管理</a></li>
-                        <li><a href="#"><span class="am-icon-th"></span> 合伙关系</a></li>
+                        <li><a href="{{ route('admin.user-list') }}"><span class="am-icon-calendar"></span> 用户管理</a></li>
+                        <li><a href="{{ route('admin.union-list') }}"><span class="am-icon-th"></span> 合伙关系</a></li>
                     </ul>
                 </li>
                 <li><a href="#"><span class="am-icon-pencil-square-o"></span> 客户管理</a></li>
