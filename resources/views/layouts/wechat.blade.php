@@ -6,6 +6,12 @@
     <title>{{ trans('welcome.message') }}</title>
     <link rel="stylesheet" href="{{ url('build/wechat/css/weui.css') }}"/>
     <link rel="stylesheet" href="{{ url('build/wechat/css/weuia.css') }}"/>
+    <style rel="stylesheet">
+        .weui_icon_success:before
+       {
+            color:#4c97e8;
+        }
+    </style>
 </head>
 <body>
 <div>

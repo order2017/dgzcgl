@@ -2,7 +2,7 @@
 @section('content')
     <div class="weui_cells_title">我的信息</div>
     <div class="weui_cells weui_cells_access">
-        <a class="weui_cell" href="{{ route('wechat.user-qrcode') }}">
+        <a class="weui_cell" href="{{ route('wechat.user-qrcode',['user_id'=>$user['user_id']]) }}">
             <div class="weui_cell_hd"><img src="{{ $user['user_avatar'] }}" alt="" style="width:35px;margin-right:5px;display:block"></div>
             <div class="weui_cell_bd weui_cell_primary">
                 <p>{{ $user['user_name'] }}</p>

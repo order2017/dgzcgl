@@ -6,6 +6,7 @@ use App\Http\Requests\UpdateRequest;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class UserController extends Controller
 {
@@ -30,7 +31,25 @@ class UserController extends Controller
 
     public function userQrcode(Request $request)
     {
-        return view('wechat.user-qrcode');
+        $qrcode_pictrue = public_path('build/wechat/images/qrcode'.$request->get('user_id').'.png');
+        if(!file_exists($qrcode_pictrue)){
+            $url= 'http://'.$request->getHttpHost().'/user-invite?user_parent_id='.$request->get('user_id');
+            QrCode::encoding('UTF-8')->format('png')->size(300)->merge('/public/build/wechat/images/avatar.png',.15)->generate($url,public_path('build/wechat/images/qrcode'.$request->get('user_id').'.png'));
+        }
+        return view('wechat.user-qrcode',['user_id'=>$request->get('user_id')]);
+    }
+
+    public function userInvite(Request $request)
+    {
+        $user_parent_id = $request->get('user_parent_id');
+        return view('wechat.user-invite',['user_parent_id'=>$user_parent_id]);
+    }
+
+    public function userInviteStore(Request $request){
+        $user = User::find($request->get('user_id'));
+        $user->user_parent_id = $request->get('user_parent_id');
+        $user->save();
+        return redirect('user-list');
     }
 
 

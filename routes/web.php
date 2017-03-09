@@ -42,6 +42,10 @@ Route::middleware('active.nav')->name('wechat.user-edit')->post('user-edit','Wec
 //用户二维码页面
 Route::middleware('active.nav')->name('wechat.user-qrcode')->get('user-qrcode','Wechat\UserController@userQrcode');
 
+//用户扫码跳转页面
+Route::middleware('active.nav')->name('wechat.user-invite')->get('user-invite','Wechat\UserController@userInvite');
+Route::middleware('active.nav')->name('wechat.user-invite')->post('user-invite','Wechat\UserController@userInviteStore');
+
 //客户列表页面
 Route::middleware('active.nav')->name('wechat.client-list')->get('client-list','Wechat\ClientController@index');
 
