@@ -1,13 +1,6 @@
 @extends('layouts.wechat')
 @section('content')
-    <div class="weui_cells">
-        <div class="weui_cell">
-            <div class="weui_cell_bd weui_cell_primary">
-                <p>我的佣金</p>
-            </div>
-        </div>
-    </div>
-
+    <div class="weui_cells_title">我的佣金</div>
     <div class="weui_panel">
         <div class="weui_panel_bd">
             <div class="weui_media_box weui_media_text">

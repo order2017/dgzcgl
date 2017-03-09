@@ -1,13 +1,6 @@
 @extends('layouts.wechat')
 @section('content')
-    <div class="weui_cells">
-        <div class="weui_cell">
-            <div class="weui_cell_bd weui_cell_primary">
-                <p>我的客户列表</p>
-            </div>
-        </div>
-    </div>
-
+    <div class="weui_cells_title">我的客户列表</div>
     <div class="weui_cells weui_cells_access">
         <a class="weui_cell" href="{{ route('wechat.client-detail') }}">
             <div class="weui_cell_hd"><img src="{{ asset('build/wechat/images/ava.png') }}" alt="" width="45px" height="45px"></div>

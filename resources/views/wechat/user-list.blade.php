@@ -1,48 +1,22 @@
 @extends('layouts.wechat')
 @section('content')
+    <div class="weui_cells_title">我的信息</div>
     <div class="weui_cells weui_cells_access">
         <a class="weui_cell" href="{{ route('wechat.user-qrcode') }}">
-            <div class="weui_cell_hd"><img src="{{ asset('build/wechat/images/ava.png') }}" alt="" style="width:35px;margin-right:5px;display:block"></div>
+            <div class="weui_cell_hd"><img src="{{ $user['user_avatar'] }}" alt="" style="width:35px;margin-right:5px;display:block"></div>
             <div class="weui_cell_bd weui_cell_primary">
-                <p>我的信息</p>
+                <p>{{ $user['user_name'] }}</p>
             </div>
             <div class="weui_cell_ft">二维码码</div>
         </a>
     </div>
-    <br>
-    {!! Form::open(['files'=>'true','data-am-validator']) !!}
-    <div class="weui_grids">
-        <div class="weui_cell">
-            <div class="weui_cell_hd">
-                {!! Form::label('user_nickname','' ? '合伙人':'报备人',['class'=>'weui_label']) !!}
-            </div>
-            <div class="weui_cell_bd weui_cell_primary">
-                {!! Form::text('user_nickname','',['class'=>'weui_input','disabled']) !!}
-                {!! Form::hidden('user_id','') !!}
-            </div>
-        </div>
-        <div class="weui_cell">
-            <div class="weui_cell_hd">{!! Form::label('user_name','真实姓名',['class'=>'weui_label']) !!}</div>
-            <div class="weui_cell_bd weui_cell_primary">
-                {!! Form::text('user_name','',['class'=>'weui_input','placeholder'=>'请输入真实姓名']) !!}
-            </div>
-        </div>
-        <div class="weui_cell weui_cell_select weui_select_before">
-            <div class="weui_cell_hd">
-                <select class="weui_select" name="select2">
-                    <option value="1">+86</option>
-                    <option value="2">+80</option>
-                    <option value="3">+84</option>
-                    <option value="4">+87</option>
-                </select>
-            </div>
-            <div class="weui_cell_bd weui_cell_primary">
-                {!! Form::number('user_mobile','',['class'=>'weui_input','placeholder'=>'请输入用户手机号','pattern'=>'[0-9]*']) !!}
-            </div>
-        </div>
+
+    <div class="weui_panel">
+        <div class="weui_panel_hd">真实名：{{ $user['username'] or "未填写" }}</div>
+        <div class="weui_panel_hd">性别：{{ $sex }}</div>
+        <div class="weui_panel_hd">手机号：{{ $user['user_mobile'] or "未填写" }}</div>
     </div>
-    <div class="weui_btn_area">
-        <button class="weui_btn weui_btn_default" type="submit" id="showTooltips">提交用户</button>
+    <div class="weui_panel weui_panel_access">
+        <a href="{{ route('wechat.user-update',['id'=>$user['user_id']]) }}" class="weui_panel_ft">完善用户资料</a>
     </div>
-    {!! Form::close() !!}
 @endsection

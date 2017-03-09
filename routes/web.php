@@ -35,6 +35,10 @@ Route::name('wechat.wechat-register')->post('wechat-register','Wechat\IndexContr
 //用户列表页面
 Route::middleware('active.nav')->name('wechat.user-list')->get('user-list','Wechat\UserController@index');
 
+//用户更新页面
+Route::middleware('active.nav')->name('wechat.user-update')->get('user-update/{id}','Wechat\UserController@update');
+Route::middleware('active.nav')->name('wechat.user-edit')->post('user-edit','Wechat\UserController@edit');
+
 //用户二维码页面
 Route::middleware('active.nav')->name('wechat.user-qrcode')->get('user-qrcode','Wechat\UserController@userQrcode');
 
