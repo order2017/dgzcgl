@@ -104,15 +104,11 @@ class IndexController extends Controller
         $mobile = $request->get('user_mobile');
         $password = $request->get('password');
         $user = User::where('user_mobile',$mobile)->get();
-        if(empty($user)){
         if (isset($user[0]['user_mobile'])==$mobile && isset($user[0]['password'])==bcrypt($password)){
             session(['wechat_user'=>$user->toArray()]);
             return redirect('/index');
         }else{
             return redirect()->back()->with('message','手机号或密码错误!');
-        }
-        }else{
-            return redirect()->back()->with('message','手机号不存在!');
         }
     }
 
@@ -130,8 +126,7 @@ class IndexController extends Controller
         if (empty($usercode)){
             return redirect()->back()->with('message','验证码必填!');
         }elseif($usercode =='3366'){
-            $user_mobile =User::where('user_mobile',$mobile)->get();
-            if (isset($user_mobile[0]['user_mobile']) == $mobile){
+            if (isset(User::where('user_mobile',$mobile)->get()[0]['user_mobile']) == $mobile){
                 return redirect()->back()->with('message','手机号存在!');
             }
             User::create([

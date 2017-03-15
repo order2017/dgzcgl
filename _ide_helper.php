@@ -6066,7 +6066,7 @@ namespace {
          * Adds a log record at the DEBUG level.
          *
          * @param string $message The log message
-         * @param array $context The log context
+         * @param array $context The log context
          * @return Boolean Whether the record has been processed
          * @static 
          */
