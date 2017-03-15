@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Wechat;
 
+use App\Client;
 use App\Http\Requests\ClientRequest;
 use App\Info;
 use Illuminate\Http\Request;
@@ -29,7 +30,10 @@ class ClientController extends Controller
         $clientMobile = $request->get('client_mobile');
         $infoRemark = $request->get('info_remark');
         $infoNotice = $request->get('info_notice');
-
+        $client = Client::where('client_mobile',$clientMobile)->exists();
+        if ($client){
+            return redirect('/client-list')->with('message','推荐客户手机号存在！');
+        }
         $client_id = DB::table('clients')->insertGetId(
             ['user_id' => $userId, 'client_name' =>$clientName,'client_mobile'=>$clientMobile]
         );
@@ -38,7 +42,8 @@ class ClientController extends Controller
             'info_quota' =>$infoQuota,
             'info_unit' =>$infoUnit,
             'info_remark' =>$infoRemark,
-            'info_notice' =>$infoNotice
+            'info_source' =>date('Y')."年".date('m')."月".date('d')."日 报备客户",
+            'info_notice' =>$infoNotice or 0
         ]);
         if ($result){
             return redirect('/client-list')->with('message','推荐成功！');
@@ -54,7 +59,8 @@ class ClientController extends Controller
      */
     public function ClientStatus()
     {
-        return view('wechat.client-status-list');
+        $client = Client::all();
+        return view('wechat.client-status-list',['client' => $client ]);
     }
 
     /**
@@ -65,7 +71,8 @@ class ClientController extends Controller
      */
     public function ClientDetail()
     {
-        return view('wechat.client-detail');
+        $client = Client::where('client_id',\Request::get('client_id'))->get();
+        return view('wechat.client-detail',['client'=> $client ]);
     }
 
     /**

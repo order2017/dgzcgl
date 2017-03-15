@@ -9,7 +9,7 @@
     </div>--}}
     <div class="weui_cells_title">我的客户详情</div>
     <div class="weui_panel">
-        <div class="weui_panel_hd">客户名：陈小龙</div>
+        <div class="weui_panel_hd">客户名：{{ $client[0]['client_name'] }}</div>
         <div class="weui_panel_bd">
             <div class="weui_media_box weui_media_text">
                 <p class="weui_media_desc">2017年03月06日 报备客户</p>

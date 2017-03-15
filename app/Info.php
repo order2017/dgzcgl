@@ -9,6 +9,6 @@ class Info extends Model
     public $primaryKey = 'info_id';
 
     protected $fillable = [
-        'client_id','info_quota','info_unit','info_remark','info_notice'
+        'client_id','info_quota','info_unit','info_remark','info_notice','info_source'
     ];
 }
