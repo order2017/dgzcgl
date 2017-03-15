@@ -48,6 +48,7 @@ Route::middleware('active.nav')->name('wechat.user-invite')->post('user-invite',
 
 //客户列表页面
 Route::middleware('active.nav')->name('wechat.client-list')->get('client-list','Wechat\ClientController@index');
+Route::middleware('active.nav')->name('wechat.client-list')->post('client-list','Wechat\ClientController@store');
 
 //常见问题解答页面
 Route::middleware('active.nav')->name('wechat.other-list')->get('other-list','Wechat\OtherController@index');
