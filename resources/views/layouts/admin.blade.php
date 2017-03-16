@@ -48,7 +48,7 @@
                         <li><a href="{{ route('admin.union-list') }}"><span class="am-icon-th"></span> 合伙关系</a></li>
                     </ul>
                 </li>
-                <li><a href="#"><span class="am-icon-pencil-square-o"></span> 客户管理</a></li>
+                <li><a href="{{ route('admin.client-list') }}"><span class="am-icon-pencil-square-o"></span> 客户管理</a></li>
                 <li><a href=""><span class="am-icon-pencil-square-o"></span> 方案管理</a></li>
                 <li><a href=""><span class="am-icon-pencil-square-o"></span> 其它管理</a></li>
                 <li><a href="{{ route('admin.logout') }}"><span class="am-icon-sign-out"></span> 注销</a></li>

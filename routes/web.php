@@ -89,5 +89,8 @@ Route::prefix('admin')->middleware('admin.login')->name('admin.user-list')->get(
 //后台合伙人列表
 Route::prefix('admin')->middleware('admin.login')->name('admin.union-list')->get('union-list','Admin\UnionController@index');
 
+//后台客户列表
+Route::prefix('admin')->middleware('admin.login')->name('admin.client-list')->get('client-list','Admin\ClientController@index');
+
 //后台用户退出页面
 Route::prefix('admin')->middleware('admin.login')->name('admin.logout')->get('logout','Admin\AdminController@logout');
