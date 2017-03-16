@@ -1,11 +1,13 @@
 @extends('layouts.wechat')
 @section('content')
     <div class="weui_cells_title">我的佣金</div>
+
+    @foreach($client as $list)
     <div class="weui_panel">
         <div class="weui_panel_bd">
             <div class="weui_media_box weui_media_text">
-                <p class="weui_media_desc" style="line-height: 23px;">客户名：陈小龙</p>
-                <p class="weui_media_desc" style="line-height: 23px;">贷款额度：100 万</p>
+                <p class="weui_media_desc" style="line-height: 23px;">客户名：{{ $list['client_name'] }}</p>
+                <p class="weui_media_desc" style="line-height: 23px;">贷款额度：{{ $list['info_quota'] }} 万</p>
                 <p class="weui_media_desc" style="line-height: 23px;">佣 金：5000 元</p>
                 <p class="weui_media_desc" style="line-height: 23px;">日 期：2017-03-06</p>
                 <ul class="weui_media_info">
@@ -15,8 +17,8 @@
             </div>
         </div>
     </div>
-
-    <div class="weui_panel">
+    @endforeach
+   {{-- <div class="weui_panel">
         <div class="weui_panel_bd">
             <div class="weui_media_box weui_media_text">
                 <p class="weui_media_desc" style="line-height: 23px;">客户名：陈小龙</p>
@@ -28,6 +30,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>--}}
 
 @endsection

@@ -15,7 +15,7 @@ class Client extends Model
        'user_id','client_name','client_mobile'
     ];
 
-    public function apply()
+   /* public function apply()
     {
         return $this->belongsTo('App\Info', 'client_id');
     }
@@ -23,7 +23,7 @@ class Client extends Model
     public function getInfoSourceAttribute()
     {
         return $this->apply->info_source;
-    }
+    }*/
 
     public static function statusLabelList()
     {
