@@ -35,7 +35,7 @@ class ClientController extends Controller
             return redirect('/client-list')->with('message','推荐客户手机号存在！');
         }
         $client_id = DB::table('clients')->insertGetId(
-            ['user_id' => $userId, 'client_name' =>$clientName,'client_mobile'=>$clientMobile]
+            ['user_id' => $userId, 'client_name' =>$clientName,'client_mobile'=>$clientMobile,'created_at' => date('Y-m-d H:i:s'),'updated_at' => date('Y-m-d H:i:s')]
         );
         $result = Info::create([
             'client_id' =>$client_id,
@@ -71,7 +71,15 @@ class ClientController extends Controller
      */
     public function ClientDetail()
     {
-        $client = Client::where('client_id',\Request::get('client_id'))->get();
+        $client_id = Client::where('client_id',\Request::get('client_id'))->get();
+        $info_id =Info::where('client_id',$client_id[0]['client_id'])->get();
+        $client =[
+            'client_name' =>$client_id[0]['client_name'],
+            'updated_at' =>$client_id[0]['updated_at'],
+            'client_status' =>$client_id[0]['client_status_text'],
+            'status' =>$client_id[0]['client_status'],
+            'info_source' =>$info_id[0]['info_source'],
+        ];
         return view('wechat.client-detail',['client'=> $client ]);
     }
 

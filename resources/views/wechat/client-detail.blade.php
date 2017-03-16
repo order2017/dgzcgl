@@ -9,13 +9,17 @@
     </div>--}}
     <div class="weui_cells_title">我的客户详情</div>
     <div class="weui_panel">
-        <div class="weui_panel_hd">客户名：{{ $client[0]['client_name'] }}</div>
+        <div class="weui_panel_hd">客户名：{{ $client['client_name'] }}</div>
         <div class="weui_panel_bd">
             <div class="weui_media_box weui_media_text">
-                <p class="weui_media_desc">2017年03月06日 报备客户</p>
+                <p class="weui_media_desc"> {{ $client['info_source'] }} </p>
                 <ul class="weui_media_info">
-                    <li class="weui_media_info_meta">录入时间 2017-03-06 20:00:00</li>
-                    <li class="weui_media_info_meta weui_media_info_meta_extra" style="color:green;">已办结</li>
+                    <li class="weui_media_info_meta">录入时间 {{ $client['updated_at'] }}</li>
+                    @if($client['status']=='1')
+                    <li class="weui_media_info_meta weui_media_info_meta_extra" style="color:red;">{{ $client['client_status'] }}</li>
+                        @else
+                        <li class="weui_media_info_meta weui_media_info_meta_extra" style="color:green;">{{ $client['client_status'] }}</li>
+                    @endif
                 </ul>
             </div>
         </div>
