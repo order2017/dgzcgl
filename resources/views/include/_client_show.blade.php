@@ -1,5 +1,5 @@
 
-<div class="am-modal am-modal-no-btn" tabindex="-1" id="doc-modal-clientShow">
+<div class="am-modal am-modal-no-btn" tabindex="-1" id="doc-modal-clientShow-{{ $list['client_id'] }}">
     <div class="am-modal-dialog">
         <div class="am-modal-hd">
             <label>客户信息显示</label>
@@ -8,20 +8,20 @@
         <div class="am-modal-bd">
             <table class="am-table am-table-bordered" style="text-align: center;">
                 <tr>
-                    <td>客户姓名：</td><td>习见平</td>
-                    <td>手机号：</td><td>13800138000</td>
+                    <td class="am-warning">客户姓名：</td><td>{{ $list['client_name'] }}</td>
+                    <td class="am-warning">手机号：</td><td>{{ $list['client_mobile'] }}</td>
                 </tr>
                 <tr>
-                    <td>贷款额度：</td><td>10万</td>
-                    <td>办理状态：</td><td>已办结</td>
+                    <td class="am-warning">贷款额度：</td><td>{{ $list['info_quota'] }} {{ $list['info_unit'] }}</td>
+                    <td class="am-warning">办理状态：</td><td>{{ $list['client_status'] }}</td>
                 </tr>
                 <tr>
-                    <td>是否告知：</td><td>已告知</td>
-                    <td>我的佣金：</td><td>50元</td>
+                    <td class="am-warning">是否告知：</td><td>{{ $list['info_notice'] }}</td>
+                    <td class="am-warning">我的佣金：</td><td>{{ $list['comm_number'] }} {{ $list['info_unit'] }}</td>
                 </tr>
                 <tr>
-                    <td>推荐姓名：</td><td>习见平</td>
-                    <td>手机号：</td><td>13800138000</td>
+                    <td class="am-warning">推荐姓名：</td><td>{{ $list['user_name'] }}</td>
+                    <td class="am-warning">手机号：</td><td>{{ $list['user_mobile'] }}</td>
                 </tr>
             </table>
         </div>

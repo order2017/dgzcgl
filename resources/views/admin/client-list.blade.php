@@ -35,16 +35,10 @@
                             <td>{{ $list['client_mobile'] }}</td>
                             <td>{{ $list['user_name'] }}</td>
                             <td>{{ $list['created_at'] }}</td>
-                            <td>{{ $list['client_status_text'] }}</td>
+                            <td>{{ $list['client_status'] }}</td>
                             <td>
-                                <div class="am-dropdown" data-am-dropdown>
-                                    <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle><span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
-                                    <ul class="am-dropdown-content">
-                                        <li><a href="#" data-am-modal="{target: '#doc-modal-clientShow', closeViaDimmer: 0, width: 600, height: 600}">1. 显示</a></li>
-                                        <li><a href="#">2. 编辑</a></li>
-                                        <li><a href="#">3. 删除</a></li>
-                                    </ul>
-                                </div>
+                                <button class="am-btn am-btn-xs am-btn-success" data-am-modal="{target: '#doc-modal-clientShow-{{ $list['client_id'] }}', closeViaDimmer: 0, width: 600, height: 260}">详情</button>
+                                @include('include._client_show')
                             </td>
                         </tr>
                         @endforeach
@@ -57,5 +51,3 @@
     </div>
     <!-- content end -->
 @endsection
-
-@include('include._client_show')

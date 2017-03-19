@@ -15,16 +15,6 @@ class Client extends Model
        'user_id','client_name','client_mobile'
     ];
 
-    public function applyInfo()
-    {
-        return $this->belongsTo('App\Info', 'info_id');
-    }
-
-    public function getInfoSourceAttribute()
-    {
-        return $this->applyInfo->info_source;
-    }
-
     public function applyUser()
     {
         return $this->belongsTo('App\User', 'user_id');
@@ -33,6 +23,11 @@ class Client extends Model
     public function getUserNameAttribute()
     {
         return $this->applyUser->user_name;
+    }
+
+    public function getUserMobileAttribute()
+    {
+        return $this->applyUser->user_mobile;
     }
 
     public static function statusLabelList()
