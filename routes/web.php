@@ -92,5 +92,11 @@ Route::prefix('admin')->middleware('admin.login')->name('admin.union-list')->get
 //后台客户列表
 Route::prefix('admin')->middleware('admin.login')->name('admin.client-list')->get('client-list','Admin\ClientController@index');
 
+//后台我的佣金字段更新
+Route::prefix('admin')->middleware('admin.login')->name('admin.client-list-number')->post('client-list-number','Admin\ClientController@ClientNumber');
+
+//后台我的客户状态字段更新
+Route::prefix('admin')->middleware('admin.login')->name('admin.client-list-status')->post('client-list-status','Admin\ClientController@ClientStatus');
+
 //后台用户退出页面
 Route::prefix('admin')->middleware('admin.login')->name('admin.logout')->get('logout','Admin\AdminController@logout');

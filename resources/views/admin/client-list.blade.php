@@ -37,7 +37,7 @@
                             <td>{{ $list['created_at'] }}</td>
                             <td>{{ $list['client_status'] }}</td>
                             <td>
-                                <button class="am-btn am-btn-xs am-btn-success" data-am-modal="{target: '#doc-modal-clientShow-{{ $list['client_id'] }}', closeViaDimmer: 0, width: 600, height: 260}">详情</button>
+                                <button class="am-btn am-btn-xs am-btn-success" data-am-modal="{target: '#doc-modal-clientShow-{{ $list['client_id'] }}', closeViaDimmer: 0, width: 630, height: 260}">详情</button>
                                 @include('include._client_show')
                             </td>
                         </tr>
