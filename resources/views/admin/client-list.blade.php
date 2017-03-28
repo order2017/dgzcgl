@@ -28,6 +28,7 @@
                         </thead>
 
                         <tbody>
+                        @if(empty($client))
                         @foreach($client as $list)
                         <tr>
                             <td>{{ $list['client_id'] }}</td>
@@ -42,6 +43,8 @@
                             </td>
                         </tr>
                         @endforeach
+                            @else
+                        @endif
                         </tbody>
                     </table>
                 </div>
