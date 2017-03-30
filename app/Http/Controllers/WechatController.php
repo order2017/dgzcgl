@@ -40,7 +40,7 @@ class WechatController extends Controller
             return $oauth->redirect();
         }
         // 已经登录过
-        session('wechat_user');
+        session('wechat_user_session');
     }
 
     //第一步:写登陆授权获取用户信息保存到SESSION中，并且跳转登陆访问
@@ -48,9 +48,9 @@ class WechatController extends Controller
         $oauth = $this->config();
         // 获取 OAuth 授权结果用户信息
         $user = $oauth->user();
-        session(['wechat_user' => $user->toArray()]);
+        session(['wechat_user_session' => $user->toArray()]);
         //第三步:采用SESSION获取用户openID查询用户详细信息，并且保存数据库，跳转登陆成功！
-        $sess = session('wechat_user');
+        $sess = session('wechat_user_session');
         $openId =$sess['id'];
         $options =Config::get('wechat');
         $app = new Application($options);
@@ -58,7 +58,8 @@ class WechatController extends Controller
         $res = $userService->get($openId)->toArray();
         //查询数据当前用户OPENID是否存在，如果存在直接跳转，不存在添加数据跳转
         $row = User::where('wechat_openid',$res['openid'])->first();
-        session(['MM_UserID' =>$row['id']]);
+        $data_row[] = $row->toArray();
+        session(['wechat_user' =>$data_row]);
         if(!$row['wechat_openid'] != !$openId){
             //添加User数据
             $user = new User();
@@ -68,7 +69,8 @@ class WechatController extends Controller
             $user->wechat_headimgurl = $res['headimgurl'];
             $user->user_type = User::USER_TYPE_WECHAT;
             $user->save();
-            session(['MM_UserID' =>$user->getQueueableId()]);
+            $data_user[] = $user->getQueueableId();
+            session(['wechat_user' =>$data_user]);
         }
         return redirect('/index');
     }
