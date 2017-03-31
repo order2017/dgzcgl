@@ -9,7 +9,7 @@
 
             <div class="am-u-sm-12 am-u-md-12" style="margin-top:-10px;padding-bottom: 16px;">
                 <a href="" class="am-btn am-btn-default am-fr am-btn-sm" style="margin-left: 6px;">刷新</a>
-                <button type="button" class="am-btn am-fr am-btn-primary am-btn-sm" data-am-modal="{target: '#doc-modal-searchUser', closeViaDimmer: 0, width: 420, height: 420}">搜索</button>
+                <button type="button"  class="am-btn am-fr am-btn-primary am-btn-sm" data-am-modal="{target: '#doc-modal-searchUser', closeViaDimmer: 0, width: 420, height: 330}"> 搜索 </button>
             </div>
 
             <div class="am-g">
@@ -64,3 +64,5 @@
     </div>
     <!-- content end -->
 @endsection
+
+@include('include/_searchUser')

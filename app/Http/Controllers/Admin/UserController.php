@@ -14,10 +14,16 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-       $user =User::all();
-       return view('admin.user-list',['user'=>$user]);
+        $searchKey = ['user_name', 'user_mobile'];
+        $user = User::orderBy('user_id', 'desc');
+        $search = [];
+        foreach ($searchKey as $key) {
+            $search[$key] = $request->input($key);
+            $request->has($key) && $user->where($key, 'like', '%' . $request->input($key) . '%');
+        }
+       return view('admin.user-list',['user'=>$user->paginate(15),'search'=>$search ]);
     }
 
     /**
