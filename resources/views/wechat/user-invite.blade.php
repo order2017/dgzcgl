@@ -6,7 +6,7 @@
                 <div class="weui_icon_area"><i class="weui_icon_success weui_icon_msg"></i></div>
                 <div class="weui_text_area">
                     <h2 class="weui_msg_title">扫描成功</h2>
-                    <p class="weui_msg_desc">即将成为<font color="red">{{ session('wechat_user')[0]['user_name'] }}</font>下线发展合伙人</p>
+                    <p class="weui_msg_desc">即将成为<font color="red">{{ session('wechat_user')[0]['user_name']=="" ? session('wechat_user')[0]['wechat_nickname'] : session('wechat_user')[0]['user_name'] }}</font>下线发展合伙人</p>
                 </div>
 
                 {!! Form::open(['route'=>'wechat.user-invite','method'=>'POST']) !!}
