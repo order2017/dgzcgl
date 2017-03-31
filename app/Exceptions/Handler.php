@@ -42,10 +42,24 @@ class Handler extends ExceptionHandler
      * @param  \Exception  $exception
      * @return \Illuminate\Http\Response
      */
-    public function render($request, Exception $exception)
+    /*public function render($request, Exception $exception)
     {
         return parent::render($request, $exception);
+    }*/
+
+    public function render($request, Exception $exception)
+    {
+        /* 错误页面 */
+        if ($exception instanceof HttpException) {
+            $code = $exception->getStatusCode();
+            if (view()->exists('errors.' . $code)) {
+                $message  = $exception->getMessage();
+                return response()->view('errors.' . $exception->getStatusCode(), ['message'=>$message], $exception->getStatusCode());
+            }
+        }
+        return parent::render($request, $exception);
     }
+
 
     /**
      * Convert an authentication exception into an unauthenticated response.
