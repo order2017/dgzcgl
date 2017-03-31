@@ -88,6 +88,7 @@ Route::prefix('admin')->middleware('admin.login')->name('admin.user-list')->get(
 
 //后台合伙人列表
 Route::prefix('admin')->middleware('admin.login')->name('admin.union-list')->get('union-list','Admin\UnionController@index');
+Route::prefix('admin')->middleware('admin.login')->name('admin.union-remove')->post('union-remove','Admin\UnionController@remove');
 
 //后台客户列表
 Route::prefix('admin')->middleware('admin.login')->name('admin.client-list')->get('client-list','Admin\ClientController@index');

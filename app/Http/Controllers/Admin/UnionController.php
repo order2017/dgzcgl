@@ -85,9 +85,14 @@ class UnionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function remove(Request $request)
     {
-        //
+        if (!empty($request->get('user_id'))){
+            $user = User::find($request->get('user_id'));
+            $user->user_parent_id =0;
+            $user->save();
+        }
+        return redirect('admin/union-list');
     }
 
     /**

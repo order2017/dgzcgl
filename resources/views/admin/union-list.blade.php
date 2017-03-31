@@ -37,7 +37,14 @@
                             <td>{{ $list['user_parent_name'] }}</td>
                             <td>{{ $list['updated_at'] }}</td>
                             <td>
-                                <a href="#" class="am-btn am-btn-xs am-btn-default" style="color:white;">解除合伙人</a>
+                                @if($list['user_parent_id']==$list['user_id'])
+                                    <a href="#" class="am-btn am-btn-xs am-btn-default" style="color:white;">解除合伙人</a>
+                                @else
+                                    {!! Form::open(['route'=>'admin.union-remove','method'=>'post','class'=>'am-inline']) !!}
+                                    {!! Form::hidden('user_id',$list['user_id']) !!}
+                                    {!! Form::submit('解除合伙人',['class'=>'am-btn am-btn-xs am-btn-danger']) !!}
+                                    {!! Form::close() !!}
+                                @endif
                             </td>
                         </tr>
                         @endforeach
