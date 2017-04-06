@@ -58,9 +58,10 @@ class WechatController extends Controller
         $res = $userService->get($openId)->toArray();
         //查询数据当前用户OPENID是否存在，如果存在直接跳转，不存在添加数据跳转
         $row = User::where('wechat_openid',$res['openid'])->first();
-        $data_row[] = $row->toArray();
-        session(['wechat_user' =>$data_row]);
-        if(!$row['wechat_openid'] != !$openId){
+        if (isset($row)){
+            $data_row[] = $row->toArray();
+            session(['wechat_user' =>$data_row]);
+        }else{
             //添加User数据
             $user = new User();
             $user->wechat_openid = $res['openid'];
