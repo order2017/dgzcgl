@@ -67,7 +67,8 @@ class WechatController extends Controller
             $user->wechat_openid = $res['openid'];
             $user->wechat_nickname = $res['nickname'];
             $user->user_sex = $res['sex'];
-            $user->wechat_headimgurl = $res['headimgurl'];
+            //$user->wechat_headimgurl = $res['headimgurl'];
+            $user->wechat_headimgurl = '永盟投资';
             $user->user_type = User::USER_TYPE_WECHAT;
             $user->save();
             $data_user[] = $user->getQueueableId();

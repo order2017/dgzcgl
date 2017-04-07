@@ -181,7 +181,8 @@ return [
 
         Collective\Html\HtmlServiceProvider::class,
 
-        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class
+        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
+        Unicodeveloper\Emoji\EmojiServiceProvider::class
 
     ],
 
@@ -235,7 +236,8 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
 
-        'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class
+        'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
+        'Emoji' => Unicodeveloper\Emoji\Facades\Emoji::class,
 
     ],
 
