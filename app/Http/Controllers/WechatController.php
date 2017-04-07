@@ -67,7 +67,7 @@ class WechatController extends Controller
             $user->wechat_openid = $res['openid'];
             $user->wechat_nickname = $res['nickname'];
             $user->user_sex = $res['sex'];
-            //$user->wechat_headimgurl = $res['headimgurl'];
+            //$user->wechat_headimgurl = $this->filterEmoji($res['nickname']);
             $user->wechat_headimgurl = '永盟投资';
             $user->user_type = User::USER_TYPE_WECHAT;
             $user->save();
@@ -75,6 +75,19 @@ class WechatController extends Controller
             session(['wechat_user' =>$data_user]);
         }
         return redirect('/index');
+    }
+
+    // 过滤掉emoji表情
+    function filterEmoji($str)
+    {
+        $str = preg_replace_callback(
+            '/./u',
+            function (array $match) {
+                return strlen($match[0]) >= 4 ? '' : $match[0];
+            },
+            $str);
+
+        return $str;
     }
 
 }
